@@ -178,6 +178,10 @@ const about: About = {
         ),
         tags: [
           { name: "Figma", icon: "figma" },
+          { name: "Canva" },
+          { name: "Wireframing" },
+          { name: "Prototyping" },
+          { name: "User Flow" }
         ],
         images: [
           {
@@ -194,9 +198,11 @@ const about: About = {
           <>Building responsive interfaces using HTML, CSS, JavaScript, Next.js, and Flutter.</>
         ),
         tags: [
-          { name: "JavaScript", icon: "javascript" },
+          { name: "JavaScript", icon: "script" },
+          { name: "TypeScript" },
           { name: "Next.js", icon: "nextjs" },
-          { name: "Flutter", icon: "flutter" },
+          { name: "Flutter", icon: "mobile" },
+          { name: "Dart" },
         ],
         images: [
           {
@@ -215,6 +221,7 @@ const about: About = {
         tags: [
           { name: "Laravel", icon: "laravel" },
           { name: "PHP", icon: "php" },
+          { name: "Python", icon: "python" },
         ],
         images: [
           {
@@ -223,6 +230,18 @@ const about: About = {
             width: 16,
             height: 9,
           },
+        ],
+      },
+      {
+        title: "Professional Skills",
+        description: (
+          <>Capabilities and tools extending beyond basic development and design tasks.</>
+        ),
+        tags: [
+          { name: "Microsoft Office" },
+          { name: "Teamwork" },
+          { name: "Communication" },
+          { name: "Problem Solving" }
         ],
       },
     ],

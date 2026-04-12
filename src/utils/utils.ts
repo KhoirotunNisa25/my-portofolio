@@ -2,14 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-type Team = {
+export type Team = {
   name: string;
   role: string;
   avatar: string;
   linkedIn: string;
 };
 
-type Metadata = {
+export type Metadata = {
   title: string;
   subtitle?: string;
   publishedAt: string;
@@ -19,6 +19,19 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  // Extended fields
+  role?: string;
+  tech?: string;
+  github?: string;
+  figma?: string;
+  website?: string;
+  category?: string;
+};
+
+export type Post = {
+  metadata: Metadata;
+  slug: string;
+  content: string;
 };
 
 import { notFound } from "next/navigation";
@@ -49,6 +62,12 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    role: data.role || "",
+    tech: data.tech || "",
+    github: data.github || "",
+    figma: data.figma || "",
+    website: data.website || "",
+    category: data.category || "",
   };
 
   return { metadata, content };

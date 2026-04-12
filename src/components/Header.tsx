@@ -74,6 +74,13 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <Fade s={{ hide: true }} fillWidth position="fixed" height="80" zIndex={9} />
@@ -118,7 +125,7 @@ export const Header = () => {
               {routes["/"] && (
                 <ToggleButton 
                   prefixIcon="home" 
-                  href="/#home" 
+                  onClick={() => scrollTo('home')}
                   selected={activeHash === "home" || activeHash === ""} 
                 />
               )}
@@ -128,7 +135,7 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href="/#about"
+                      onClick={() => scrollTo('about')}
                       label={about.label}
                       selected={activeHash === "about"}
                     />
@@ -136,7 +143,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href="/#about"
+                      onClick={() => scrollTo('about')}
                       selected={activeHash === "about"}
                     />
                   </Row>
@@ -147,7 +154,7 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/#work"
+                      onClick={() => scrollTo('work')}
                       label={work.label}
                       selected={activeHash === "work"}
                     />
@@ -155,7 +162,7 @@ export const Header = () => {
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/#work"
+                      onClick={() => scrollTo('work')}
                       selected={activeHash === "work"}
                     />
                   </Row>

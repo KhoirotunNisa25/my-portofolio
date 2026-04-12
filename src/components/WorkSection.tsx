@@ -5,9 +5,10 @@ import { work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import type { Post } from "@/utils/utils";
 
 interface WorkSectionProps {
-  posts?: any[];
+  posts?: Post[];
 }
 
 export const WorkSection = ({ posts }: WorkSectionProps) => {
