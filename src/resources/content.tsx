@@ -5,9 +5,9 @@ const person: Person = {
   firstName: "Khoirotun",
   lastName: "Nisa",
   name: "Khoirotun Nisa",
-  role: "Design Engineer",
+  role: "Frontend Developer & UI/UX Designer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
+  email: "khoirotunnisa2507@gmail.com",
   location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Bahasa Indonesia"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -37,7 +37,7 @@ const social: Social = [
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
+    link: "https://www.instagram.com/k.nis_",
     essential: false,
   },
   {
@@ -54,24 +54,24 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Crafting intuitive digital experiences through design and code</>,
+  headline: <>Designing and building user-centered digital products</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">NexaCodeStudio</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Building digital products
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "https://www.nexacode.dev/",
   },
   subline: (
     <>
-    I'm a web developer and UI/UX designer who enjoys crafting clean and user-friendly digital products. 
-    I work across web and mobile frontend, turning ideas into functional and visually engaging experiences.
+    I'm a frontend developer and UI/UX designer focused on building clean and user-friendly digital products. 
+    Experienced in developing web and mobile applications, I enjoy transforming ideas into functional interfaces that solve real problems.
 </>
   ),
 };
@@ -80,132 +80,146 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from Malang`,
+  
   tableOfContent: {
     display: true,
     subItems: false,
   },
+
   avatar: {
     display: true,
   },
+
   calendar: {
     display: false,
-    link: "https://cal.com",
+    link: "",
   },
+
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        I'm Khoirotun Nisa', a web developer and UI/UX designer based in Malang. 
-      I enjoy building digital products that are not only functional, but also intuitive and visually engaging. 
-      My focus lies in bridging design and development to create seamless user experiences.
+        I'm Khoirotun Nisa', a frontend developer and UI/UX designer based in Malang. 
+        I focus on building user-centered digital products that are both functional and visually engaging. 
+        Through academic projects and real-world experience, I enjoy turning ideas into meaningful digital solutions.
       </>
     ),
   },
+
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "NexaCodeStudio",
+        timeframe: "2025 - Present",
+        role: "Frontend Developer (Freelance), co-founder",
         achievements: [
-  "Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.",
-  "Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster.",
-],
+          "Developed web and mobile applications as part of a small development team.",
+          "Implemented UI/UX designs into functional frontend features based on client requirements.",
+        ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "NexaCode Project",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "PT Fahove",
+        timeframe: "2025",
+        role: "UI/UX Designer Intern (WFH)",
         achievements: [
-          "Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.",
-          "Led a cross-functional team to launch a new product line, contributing to a 15% increase",
+          "Designed user interfaces from wireframe to prototype using Figma.",
+          "Collaborated with team members to improve usability and user experience.",
+        ],
+        images: [],
+      },
+      {
+        company: "Workshop Riset Informatika (WRI)",
+        timeframe: "2024 - 2025",
+        role: "UI/UX Mentor",
+        achievements: [
+          "Guided participants in learning UI/UX fundamentals using Figma.",
+          "Delivered materials on user flow, wireframing, and prototyping through hands-on sessions.",
         ],
         images: [],
       },
     ],
   },
+
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Politeknik Negeri Malang",
+        description: <>D4 Teknik Informatika (2023 - Present)</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "SMAN 1 Malang",
+        description: <>MIPA (2020 - 2023)</>,
       },
     ],
   },
+
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
+        title: "UI/UX Design",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Designing user flows, wireframes, and interactive prototypes using Figma.</>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "Figma", icon: "figma" },
         ],
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            alt: "UI UX Design",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
+        title: "Frontend Development",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Building responsive interfaces using HTML, CSS, JavaScript, Next.js, and Flutter.</>
         ),
         tags: [
+          { name: "JavaScript", icon: "javascript" },
+          { name: "Next.js", icon: "nextjs" },
+          { name: "Flutter", icon: "flutter" },
+        ],
+        images: [
           {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
+            src: "/images/projects/project-01/cover-03.jpg",
+            alt: "Frontend Development",
+            width: 16,
+            height: 9,
           },
         ],
-        // optional: leave the array empty if you don't want to display images
+      },
+      {
+        title: "Web Development",
+        description: (
+          <>Developing web applications using Laravel and integrating backend features.</>
+        ),
+        tags: [
+          { name: "Laravel", icon: "laravel" },
+          { name: "PHP", icon: "php" },
+        ],
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
+            alt: "Web Development",
             width: 16,
             height: 9,
           },

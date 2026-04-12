@@ -11,7 +11,7 @@ import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
   timeZone: string;
-  locale?: string; // Optionally allow locale, defaulting to 'en-GB'
+  locale?: string;
 };
 
 const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
@@ -44,6 +44,35 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [activeHash, setActiveHash] = useState("");
+
+  // Track active section to highlight the nav correctly in 1-page layout
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "work"];
+      let current = "";
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 250 && rect.bottom >= 250) {
+            current = sectionId;
+          }
+        }
+      }
+      setActiveHash(current);
+    };
+
+    // Set initial
+    if (window.location.hash) {
+      setActiveHash(window.location.hash.replace("#", ""));
+    } else {
+      handleScroll();
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -87,7 +116,11 @@ export const Header = () => {
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton 
+                  prefixIcon="home" 
+                  href="/#home" 
+                  selected={activeHash === "home" || activeHash === ""} 
+                />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -95,16 +128,16 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href="/about"
+                      href="/#about"
                       label={about.label}
-                      selected={pathname === "/about"}
+                      selected={activeHash === "about"}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href="/about"
-                      selected={pathname === "/about"}
+                      href="/#about"
+                      selected={activeHash === "about"}
                     />
                   </Row>
                 </>
@@ -114,16 +147,16 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/work"
+                      href="/#work"
                       label={work.label}
-                      selected={pathname.startsWith("/work")}
+                      selected={activeHash === "work"}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/work"
-                      selected={pathname.startsWith("/work")}
+                      href="/#work"
+                      selected={activeHash === "work"}
                     />
                   </Row>
                 </>

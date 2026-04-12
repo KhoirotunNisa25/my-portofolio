@@ -9,11 +9,12 @@ import {
   Row,
   Schema,
   Meta,
-  Line,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
+import { home, about, person, baseURL } from "@/resources";
 import { Mailchimp } from "@/components";
-import { Projects } from "@/components/work/Projects";
+import { AboutSection } from "@/components/AboutSection";
+import { WorkSection } from "@/components/WorkSection";
+import { getPosts } from "@/utils/utils";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -26,8 +27,9 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+  const projects = getPosts(["src", "app", "work", "projects"]);
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="m" paddingY="12" horizontal="center" fillWidth>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -41,7 +43,9 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
+      
+      {/* Home Hero Section */}
+      <Column id="home" fillWidth horizontal="center" gap="m" paddingBottom="128" paddingTop="64">
         <Column maxWidth="s" horizontal="center" align="center">
           {home.featured.display && (
             <RevealFx
@@ -76,9 +80,9 @@ export default function Home() {
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
             <Button
-              id="about"
+              id="goto-about"
               data-border="rounded"
-              href={about.path}
+              href="#about"
               variant="secondary"
               size="m"
               weight="default"
@@ -99,11 +103,17 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+
+      {/* About Section (Parallax via useScroll & useTransform inside component) */}
+      <AboutSection />
+
+      {/* Work Section (Parallax via useScroll & useTransform inside component) */}
+      <WorkSection posts={projects} />
+
+      {/* Footer / Mailchimp */}
+      <RevealFx translateY="16">
+        <Mailchimp />
       </RevealFx>
-      <Projects range={[2]} />
-      <Mailchimp />
     </Column>
   );
 }
