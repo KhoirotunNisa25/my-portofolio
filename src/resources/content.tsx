@@ -14,8 +14,8 @@ const person: Person = {
 
 const newsletter: Newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  title: <>Get in Touch</>,
+  description: <>Interested in collaborating or just want to say hi? Feel free to reach out to me.</>,
 };
 
 const social: Social = [
@@ -43,7 +43,7 @@ const social: Social = [
   {
     name: "Email",
     icon: "email",
-    link: "https://khoirotunnisa25@gmail.com",
+    link: "mailto:khoirotunnisa2507@gmail.com",
     essential: true,
   },
 ];
