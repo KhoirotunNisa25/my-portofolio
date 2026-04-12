@@ -242,7 +242,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
                       style={{ transition: "all 0.2s ease", height: "100%", background: hoveredCard === item.name ? colors.bg : "var(--color-neutral-alpha-weak)", transform: hoveredCard === item.name ? "translateY(-4px)" : "translateY(0)" }}
                       onMouseEnter={() => setHoveredCard(item.name)}
                       onMouseLeave={() => setHoveredCard(null)}>
-                      <IconButton href={item.link} icon={item.icon} tooltip={item.name} size="m" variant="ghost" 
+                      <IconButton icon={item.icon} tooltip={item.name} size="m" variant="ghost" 
                         style={{ color: hoveredCard === item.name ? colors.text : "inherit", background: "transparent" }} />
                       <Text variant="label-default-xs" style={{ color: hoveredCard === item.name ? "rgba(255,255,255,0.8)" : "var(--color-neutral-on-background-weak)" }}>
                         {item.name}
