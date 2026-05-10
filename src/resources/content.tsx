@@ -71,7 +71,8 @@ const home: Home = {
   subline: (
     <>
     I'm a frontend developer and UI/UX designer focused on building clean and user-friendly digital products. 
-    Experienced in developing web and mobile applications, I enjoy transforming ideas into functional interfaces that solve real problems.
+    Experienced in developing web and mobile applications, I enjoy transforming ideas into functional interfaces that solve real problems. 
+    I'm also exploring AI and Machine Learning for future projects.
 </>
   ),
 };
@@ -103,6 +104,7 @@ const about: About = {
       <>
         I'm Khoirotun Nisa', a frontend developer and UI/UX designer based in Malang. 
         I focus on building user-centered digital products that are both functional and visually engaging. 
+        I'm also learning and exploring AI and Machine Learning to expand my skill set and future projects.
         Through academic projects and real-world experience, I enjoy turning ideas into meaningful digital solutions.
       </>
     ),
@@ -230,6 +232,19 @@ const about: About = {
             width: 16,
             height: 9,
           },
+        ],
+      },
+      {
+        title: "AI & Machine Learning",
+        description: (
+          <>Exploring AI and Machine Learning tools for experimentation and future projects.</>
+        ),
+        tags: [
+          { name: "Python", icon: "python" },
+          { name: "OpenCV" },
+          { name: "TensorFlow" },
+          { name: "Scikit-learn" },
+          { name: "Gemini API" },
         ],
       },
       {

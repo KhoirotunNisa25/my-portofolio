@@ -44,6 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   priority,
 }) => {
   const isUXExploration = category === "UI/UX Exploration";
+  const isAIExploration = category === "AI & Machine Learning Exploration";
 
   return (
     <div>
@@ -79,8 +80,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {category && (
               <Tag
                 size="s"
-                variant={isUXExploration ? "info" : "success"}
-                label={isUXExploration ? "UI/UX" : "Product"}
+                variant={isUXExploration ? "info" : isAIExploration ? "warning" : "success"}
+                label={isUXExploration ? "UI/UX" : isAIExploration ? "AI/ML" : "Product"}
               />
             )}
           </Flex>
