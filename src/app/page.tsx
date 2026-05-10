@@ -54,9 +54,7 @@ export default function Home() {
       <WorkSection posts={projects} />
 
       {/* Footer / Mailchimp */}
-      <RevealFx translateY="16">
-        <Mailchimp />
-      </RevealFx>
+      <Mailchimp />
     </Column>
   );
 }

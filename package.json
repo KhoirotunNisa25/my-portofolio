@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
+    "@next/bundle-analyzer": "^16.2.6",
     "@next/mdx": "^16.0.10",
     "@once-ui-system/core": "^1.6.4",
     "classnames": "^2.5.1",

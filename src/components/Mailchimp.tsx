@@ -7,7 +7,7 @@ import {
 } from "@once-ui-system/core";
 import type { opacity, SpacingToken } from "@once-ui-system/core";
 
-export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
+export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ className, ...flex }) => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   if (newsletter.display === false) return null;
@@ -96,8 +96,19 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
   };
 
   return (
-    <Column overflow="hidden" fillWidth padding="xl" radius="l" marginBottom="m"
-      horizontal="center" align="center" background="surface" border="neutral-alpha-weak" {...flex}>
+    <Column
+      overflow="hidden"
+      fillWidth
+      padding="xl"
+      radius="l"
+      marginBottom="m"
+      horizontal="center"
+      align="center"
+      background="surface"
+      border="neutral-alpha-weak"
+      className={["mailchimp-card", className].filter(Boolean).join(" ")}
+      {...flex}
+    >
       <Background
         top="0" position="absolute"
         mask={{ x: mailchimp.effects.mask.x, y: mailchimp.effects.mask.y, radius: mailchimp.effects.mask.radius, cursor: mailchimp.effects.mask.cursor }}

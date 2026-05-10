@@ -1,7 +1,7 @@
 @use "./breakpoints.scss" as breakpoints;
 
 .footer {
-    min-height: 160px;
+    min-height: clamp(300px, 40vh, 500px);
 }
 
 @media (max-width: breakpoints.$s) {

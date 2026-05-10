@@ -90,3 +90,9 @@
     opacity: 0.5;
   }
 }
+
+.mailchimp-card {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(360px, 45vh, 560px);
+}
