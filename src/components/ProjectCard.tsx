@@ -10,7 +10,7 @@ import {
   Tag,
 } from "@once-ui-system/core";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
   href: string;
@@ -46,32 +46,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const isUXExploration = category === "UI/UX Exploration";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -5 }}
-    >
+    <div>
       <Column
         fillWidth
         border="neutral-alpha-weak"
         radius="l"
         gap="12"
+        className={styles.card}
         style={{
           overflow: "hidden",
-          transition: "border-color 0.2s ease, box-shadow 0.2s ease",
           height: "100%",
-        }}
-        onMouseEnter={(e) => {
-          const el = e.currentTarget as HTMLElement;
-          el.style.borderColor = "var(--color-brand-medium)";
-          el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.08)";
-        }}
-        onMouseLeave={(e) => {
-          const el = e.currentTarget as HTMLElement;
-          el.style.borderColor = "";
-          el.style.boxShadow = "";
         }}
       >
         {images?.[0] && (
@@ -173,6 +157,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </Row>
         </Column>
       </Column>
-    </motion.div>
+    </div>
   );
 }

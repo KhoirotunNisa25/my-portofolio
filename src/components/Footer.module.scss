@@ -1,5 +1,9 @@
 @use "./breakpoints.scss" as breakpoints;
 
+.footer {
+    min-height: 160px;
+}
+
 @media (max-width: breakpoints.$s) {
     .mobile {
         text-align: center;

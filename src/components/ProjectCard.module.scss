@@ -1,0 +1,19 @@
+.card {
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+	border-color: var(--color-brand-medium);
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+	transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.card {
+		transition: none;
+	}
+
+	.card:hover {
+		transform: none;
+	}
+}

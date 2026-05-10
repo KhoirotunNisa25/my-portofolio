@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Avatar,
   Button,
@@ -14,8 +12,7 @@ import {
 } from "@once-ui-system/core";
 import { about, person, social } from "@/resources";
 import styles from "@/components/about/about.module.scss";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 
 // ─── Timeline Item Component ─────────────────────────────────────────────────
 // Each item has a dot + animated fill line based on scroll progress
@@ -25,22 +22,8 @@ interface TimelineItemProps {
 }
 
 const TimelineItem = ({ children, isLast = false }: TimelineItemProps) => {
-  const itemRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: itemRef,
-    // Start animating when top of item hits 80% of viewport, done at 20%
-    offset: ["start 0.8", "start 0.2"],
-  });
-
-  // The line fill goes from 0% height to 100% as you scroll past
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  // Dot fills from empty to solid
-  const dotScale = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-
   return (
     <div
-      ref={itemRef}
       style={{
         display: "flex",
         gap: "24px",
@@ -71,13 +54,12 @@ const TimelineItem = ({ children, isLast = false }: TimelineItemProps) => {
           }}
         >
           {/* Inner fill animated */}
-          <motion.div
+          <div
             style={{
               position: "absolute",
               inset: "2px",
               borderRadius: "50%",
               backgroundColor: "var(--color-brand-medium, #3b82f6)",
-              scale: dotScale,
             }}
           />
         </div>
@@ -95,13 +77,13 @@ const TimelineItem = ({ children, isLast = false }: TimelineItemProps) => {
               minHeight: "40px",
             }}
           >
-            <motion.div
+            <div
               style={{
                 position: "absolute",
                 top: 0,
                 left: 0,
                 right: 0,
-                height: lineHeight,
+                height: "100%",
                 backgroundColor: "var(--color-brand-medium, #3b82f6)",
               }}
             />
@@ -142,17 +124,8 @@ const TimelineSection = ({ title, children }: TimelineSectionProps) => {
 
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export const AboutSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const avatarY = useTransform(scrollYProgress, [0, 1], [-20, 20]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [20, -20]);
-
   return (
-    <motion.div ref={ref} id="about" style={{ width: "100%" }}>
+    <div id="about" style={{ width: "100%" }}>
       <Column maxWidth="m" fillWidth paddingBottom="128" paddingTop="128">
         <Row fillWidth s={{ direction: "column" }} horizontal="center" gap="48">
           {/* ── Avatar sidebar ── */}
@@ -170,9 +143,6 @@ export const AboutSection = () => {
               gap="m"
               flex={3}
               horizontal="center"
-              as={motion.div}
-              // @ts-expect-error: Style conflict between UI core and Framer Motion
-              style={{ y: avatarY }}
             >
               <Avatar src={person.avatar} size="xl" />
               <Row gap="8" vertical="center">
@@ -196,9 +166,6 @@ export const AboutSection = () => {
             className={styles.blockAlign}
             flex={9}
             maxWidth={40}
-            as={motion.div}
-            // @ts-expect-error: Style conflict between UI core and Framer Motion
-            style={{ y: contentY }}
           >
             {/* ── Hero / intro block ── */}
             <Column fillWidth minHeight="160" vertical="center" marginBottom="32">
@@ -396,6 +363,6 @@ export const AboutSection = () => {
           </Column>
         </Row>
       </Column>
-    </motion.div>
+    </div>
   );
 };
