@@ -96,3 +96,31 @@
   overflow: hidden;
   min-height: clamp(360px, 45vh, 560px);
 }
+
+.scroll-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.back-to-projects {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 600px) {
+  .scroll-top {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .back-to-projects {
+    top: 16px;
+    left: 16px;
+  }
+}

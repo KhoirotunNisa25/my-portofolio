@@ -81,19 +81,13 @@ export function Projects({ range, exclude, posts = [] }: ProjectsProps) {
         }}
       >
         {displayedProjects.map((post, index) => {
-          let href = `/work/${post.slug}`;
+          const href = `/work/${post.slug}`;
           const content = post.content;
-          let github = post.metadata.github;
-          let website = post.metadata.website;
-
-          if (post.slug === "nexacodestudio-landing-page") {
-            href = website || "https://www.nexacode.dev/";
-            website = undefined; // avoid duplicate website link
-          }
-
-          if (post.slug === "kasirq") {
-            github = "https://nexa-code-studio.github.io/kasirq-docs/";
-          }
+          const website = post.metadata.website;
+          const github =
+            post.slug === "kasirq"
+              ? "https://nexa-code-studio.github.io/kasirq-docs/"
+              : post.metadata.github;
 
           return (
             <ProjectCard

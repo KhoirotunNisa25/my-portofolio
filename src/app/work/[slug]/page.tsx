@@ -13,7 +13,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX, BackButton } from "@/components";
+import { ScrollToHash, ScrollToTop, CustomMDX, BackButton } from "@/components";
 import type { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
@@ -163,6 +163,7 @@ export default async function Project({
       </Column>
 
       <ScrollToHash />
+      <ScrollToTop />
     </Column>
   );
 }

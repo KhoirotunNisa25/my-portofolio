@@ -48,6 +48,10 @@ export const Header = () => {
 
   // Track active section to highlight the nav correctly in 1-page layout
   useEffect(() => {
+    if (pathname.startsWith("/work/")) {
+      return;
+    }
+
     const handleScroll = () => {
       const sections = ["home", "about", "work"];
       let current = "";
@@ -72,7 +76,11 @@ export const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
+
+  if (pathname.startsWith("/work/")) {
+    return null;
+  }
 
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);

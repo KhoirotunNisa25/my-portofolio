@@ -1,5 +1,39 @@
 .card {
+	position: relative;
 	transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.cardLink {
+	cursor: pointer;
+	outline: none;
+}
+
+.cardOverlay {
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	z-index: 0;
+}
+
+.cardOverlaySpan {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.cardContent {
+	position: relative;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.cardContent a,
+.cardContent button {
+	pointer-events: auto;
+}
+
+.cardLink:focus-visible .card {
+	box-shadow: 0 0 0 2px var(--color-brand-medium);
 }
 
 .card:hover {

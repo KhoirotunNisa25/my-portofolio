@@ -9,6 +9,7 @@ import {
   Row,
   Tag,
 } from "@once-ui-system/core";
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./ProjectCard.module.scss";
 
@@ -47,7 +48,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const isAIExploration = category === "AI& ML Explorration";
 
   return (
-    <div>
+    <div className={styles.cardLink}>
       <Column
         fillWidth
         border="neutral-alpha-weak"
@@ -59,6 +60,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           height: "100%",
         }}
       >
+        <Link
+          href={href}
+          className={styles.cardOverlay}
+          aria-label={`Open ${title} details`}
+        >
+          <span className={styles.cardOverlaySpan} aria-hidden="true" />
+        </Link>
         {images?.[0] && (
           <div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
             <Image
@@ -71,7 +79,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             />
           </div>
         )}
-        <Column padding="24" gap="12" fillWidth>
+        <Column padding="24" gap="12" fillWidth className={styles.cardContent}>
           {/* Top: category badge + title */}
           <Flex fillWidth gap="8" vertical="center" horizontal="between" wrap>
             <Heading as="h3" variant="heading-strong-m" style={{ flex: 1 }}>
