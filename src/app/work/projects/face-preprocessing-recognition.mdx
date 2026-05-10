@@ -1,0 +1,220 @@
+---
+title: "Face Preprocessing for Face Recognition"
+publishedAt: "2026-05-10"
+summary: "A preprocessing pipeline to normalize lighting, reduce noise, and sharpen facial features before recognition."
+role: "Computer Vision & Image Processing"
+tech: "Python, OpenCV, NumPy"
+github: "https://github.com/KhoirotunNisa25/PCVK_Ganjil_2025/blob/main/Case_Method_1.ipynb"
+category: "AI& ML Explorration"
+images:
+  - "/images/projects/ai/cover.jpg"
+team: []
+---
+
+A face preprocessing pipeline to improve image quality before face recognition, making facial features easier to detect and match.
+
+---
+
+# 1. Problem Scope
+
+- Faces are too dark or overexposed.
+- Low contrast reduces feature visibility.
+- Noise hides details like eyes, lips, and nose.
+- Shadows distort face regions.
+
+---
+
+# 2. Goals
+
+- Normalize lighting conditions.
+- Enhance facial features.
+- Reduce noise.
+- Improve dataset quality.
+- Boost face recognition accuracy.
+
+---
+
+# 3. Tech Stack
+
+### Language
+
+- Python
+
+### Libraries
+
+- OpenCV (processing, histogram, filtering, equalization)
+- NumPy (matrix and pixel operations)
+- Matplotlib (histogram and filter visualization)
+
+### Environment
+
+- Google Colab
+
+---
+
+# 4. System Flow
+
+```text
+Load Image
+↓
+Histogram Analysis
+↓
+Brightness & Contrast Adjustment
+↓
+Histogram Equalization
+↓
+Low-pass Filtering
+↓
+High-pass Filtering
+↓
+Dithering
+↓
+PSNR Evaluation
+↓
+Ready for Face Recognition
+```
+
+---
+
+# 5. Dataset Overview
+
+- Face images with dark, bright, and shadowed conditions.
+- RGB inputs, with grayscale for specific filters.
+
+---
+
+# 6. Histogram Analysis
+
+### Purpose
+
+Analyze pixel intensity distribution.
+
+### Interpretation
+
+- Dark images: histogram piles on the left.
+- Bright images: histogram piles on the right.
+- Shadowed images: spread with extreme bright and dark areas.
+
+---
+
+# 7. Brightness and Contrast Adjustment
+
+### Linear Transform
+
+```
+g(x) = alpha * f(x) + beta
+```
+
+- alpha = contrast
+- beta = brightness
+
+### Log Brightness
+
+```
+s = c * log(1 + r)
+```
+
+- Enhances dark regions.
+- Can overexpose if too strong.
+
+---
+
+# 8. Histogram Equalization
+
+### Function
+
+Spreads intensity distribution for better contrast.
+
+### Notes
+
+- Dark areas gain detail.
+- Noise may increase.
+- Colors can look less natural in RGB.
+
+---
+
+# 9. Low-pass Filter (Gaussian Blur)
+
+```python
+cv.GaussianBlur()
+```
+
+- Reduces noise.
+- Softens small details.
+
+---
+
+# 10. High-pass Filter (Sharpen)
+
+Enhances edges like eyes, lips, nose, and facial contours.
+
+---
+
+# 11. Floyd-Steinberg Dithering
+
+- Reduces color depth while keeping visual detail.
+- Can make skin texture rough.
+
+---
+
+# 12. PSNR Evaluation
+
+```
+PSNR = 10 * log10(255^2 / MSE)
+```
+
+- Higher PSNR = closer to original image.
+- Lower PSNR = stronger transformation.
+
+### Results
+
+| Method            | PSNR     |
+| ----------------- | -------- |
+| Gaussian Blur 3x3 | 40.37 dB |
+| Gaussian Blur 5x5 | 38.56 dB |
+| Sharpen 3x3       | 34.28 dB |
+| Sharpen 5x5       | 35.71 dB |
+
+---
+
+# 13. Analysis
+
+- Gaussian Blur looks most natural and removes noise.
+- Sharpening improves edge clarity but increases distortion.
+
+---
+
+# 14. Best Combination
+
+```text
+Brightness & Contrast
+↓
+Histogram Equalization
+↓
+Gaussian Blur
+↓
+Sharpening
+```
+
+---
+
+# 15. Strengths
+
+- Lightweight and fast.
+- Works in real-time.
+- Improves facial readability.
+
+---
+
+# 16. Limitations
+
+- Manual parameters.
+- Not adaptive to lighting changes.
+- No face alignment.
+- RGB equalization can distort colors.
+
+---
+
+# 17. Conclusion
+
+This preprocessing pipeline improves face image quality by stabilizing lighting, enhancing contrast, reducing noise, and sharpening key facial features so they are easier for recognition models to detect.
