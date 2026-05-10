@@ -44,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   priority,
 }) => {
   const isUXExploration = category === "UI/UX Exploration";
-  const isAIExploration = category === "AI & Machine Learning Exploration";
+  const isAIExploration = category === "AI& ML Explorration";
 
   return (
     <div>

@@ -1,0 +1,172 @@
+---
+title: "BNI Receipt Authenticity Detection"
+publishedAt: "2026-05-10"
+summary: "A classic computer vision + machine learning system to detect authentic vs manipulated BNI transaction receipts."
+role: "Computer Vision & Machine Learning"
+tech: "Python, OpenCV, Scikit-learn"
+github: "https://github.com/KhoirotunNisa25/PCVK_CM"
+category: "AI& ML Explorration"
+images:
+	- "/images/projects/ai/cover.jpg"
+team: []
+---
+
+A computer vision and machine learning system to classify BNI transaction receipts as **authentic** or **manipulated** based on visual patterns in receipt images. The pipeline combines classic CV features with lightweight ML models to keep it fast and interpretable.
+
+---
+
+# 1. Goals
+
+- Detect receipt manipulation in digital or printed forms.
+- Support proof-of-transfer validation.
+- Reduce fraud with automated verification.
+- Enable scalable payment checks for marketplace and UMKM workflows.
+
+---
+
+# 2. Dataset
+
+The dataset is grouped by transaction type with authentic and fake folders:
+
+```txt
+qris/
+topup/
+transaksi/
+transfer/
+```
+
+Structure:
+
+```txt
+dataset/
+ ├── qris/
+ │    ├── asli/
+ │    └── palsu/
+ ├── transfer/
+ ├── transaksi/
+ └── topup/
+```
+
+- Initial data: 126 images
+- After augmentation: 630 samples
+- All images are resized to 200 x 200 px
+
+---
+
+# 3. Pipeline
+
+### 1) Preprocessing
+
+- Grayscale conversion
+- Resize to 200 x 200 px
+- Light normalization
+
+### 2) Augmentation
+
+- Horizontal flip
+- Rotation
+- Brightness adjustment
+
+### 3) Template Building
+
+A mean template is built from authentic receipts to capture the overall layout pattern.
+
+---
+
+# 4. Feature Extraction
+
+### Histogram Feature
+
+- Uses `cv2.calcHist()`
+- Produces 64 features for intensity distribution
+
+### Template Matching
+
+- Uses `cv2.matchTemplate()`
+- Outputs similarity score vs the authentic template
+
+### ORB Feature Matching
+
+- Uses `cv2.ORB_create()` + `BFMatcher()`
+- Outputs count of matching keypoints
+
+### HOG (Version 2)
+
+- Uses `cv2.HOGDescriptor()`
+- Expands feature space from 66 to 2982 dimensions
+
+---
+
+# 5. Models
+
+### KNN
+
+- Simple, fast to train
+- Sensitive to high-dimensional features
+
+### SVM
+
+- RBF kernel
+- Strong performance on small datasets
+
+---
+
+# 6. Results
+
+**Without HOG**
+
+- SVM Accuracy: 98.4%
+- F1-score: 98.4%
+
+**With HOG**
+
+- SVM Accuracy: 86.5%
+- F1-score: 84.9%
+
+### Why HOG hurt performance
+
+- Feature dimensionality too large for small dataset
+- Higher sensitivity to noise and blur
+- Curse of dimensionality impacts KNN and overall stability
+
+---
+
+# 7. Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
+
+---
+
+# 8. Inference Output
+
+- CSV predictions with confidence scores
+- Output folders separated by predicted label
+
+```txt
+output/test_results.csv
+output/test_results/asli
+output/test_results/palsu
+```
+
+---
+
+# 9. Strengths
+
+- Lightweight, no GPU required
+- Fast inference
+- Works on small datasets
+- Easy to explain for academic contexts
+
+---
+
+# 10. Limitations
+
+- Sensitive to layout changes
+- Struggles with high-quality manipulations
+- Less robust than modern deep learning methods
+
+
