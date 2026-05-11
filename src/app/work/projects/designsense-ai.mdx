@@ -1,0 +1,149 @@
+---
+title: "DesignSense AI"
+publishedAt: "2026-05-11"
+summary: "An AI-powered UI/UX feedback assistant that analyzes UI screenshots with Gemini Vision."
+role: "Frontend Developer & UI/UX"
+tech: "Next.js, TypeScript, Tailwind CSS, Gemini Vision API"
+github: "https://github.com/KhoirotunNisa25/designsense-ai"
+website: "https://designsense-ai-psi.vercel.app/"
+category: "AI& ML Explorration"
+images:
+  - "/images/projects/ai/cover2.png"
+team: []
+---
+
+DesignSense AI is a web application that provides automated UI/UX feedback by analyzing UI screenshots with multimodal AI. Users upload a screenshot and instantly receive structured insights about usability, accessibility, hierarchy, and design consistency.
+
+---
+
+# 1. Background
+
+UI/UX evaluation often requires senior designers, usability testing, or time-consuming manual review. This project helps designers and developers get fast, early feedback before formal testing.
+
+---
+
+# 2. Goals
+
+- Understand UI screenshots and extract design signals.
+- Identify usability and accessibility issues.
+- Provide structured, actionable recommendations.
+- Speed up design review for early iteration.
+
+---
+
+# 3. System Flow
+
+```txt
+User Upload Screenshot
+↓
+Frontend Preview
+↓
+Image sent to Next.js API route
+↓
+Gemini Vision analyzes the UI
+↓
+AI returns structured feedback
+↓
+Results shown as cards and scores
+```
+
+---
+
+# 4. Core Features
+
+### 1) Screenshot Upload
+
+Supports landing pages, mobile UI, dashboards, forms, and other interface screenshots.
+
+### 2) AI UI/UX Analysis
+
+Analysis covers:
+
+- Visual hierarchy
+- Spacing and alignment
+- Readability
+- CTA visibility
+- Consistency
+- Accessibility
+- UX issues
+
+### 3) Structured Feedback
+
+AI responses are grouped into sections:
+
+```txt
+Visual Hierarchy
+Accessibility
+Layout Consistency
+UX Issues
+Suggestions
+```
+
+### 4) AI Scoring
+
+- Accessibility Score
+- Visual Consistency Score
+- UX Clarity Score
+
+### 5) Modern Responsive UI
+
+A minimal, card-based layout with clear states and responsive design.
+
+---
+
+# 5. Tech Stack
+
+### Frontend
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+
+### AI and Backend
+
+- Gemini Vision API
+- Next.js Route Handler
+- Prompt Engineering
+
+### Deployment
+
+- Vercel
+
+---
+
+# 6. AI Implementation
+
+The system uses multimodal analysis (image-to-text) with prompt engineering to produce structured, professional feedback.
+
+---
+
+# 7. Prompt Engineering
+
+Prompts guide the AI to generate:
+
+- Hierarchy evaluation
+- Accessibility review
+- CTA clarity
+- Spacing consistency
+- Usability suggestions
+
+---
+
+# 8. Challenges
+
+- Optimizing image uploads
+- Ensuring consistent AI responses
+- Reducing hallucination
+- Building a fast and intuitive UX flow
+
+---
+
+# 9. Project Value
+
+This project combines frontend engineering, UI/UX thinking, multimodal AI, and prompt engineering into a practical tool for design review workflows.
+
+---
+
+# 10. Outcome
+
+DesignSense AI delivers a working prototype that provides automatic UI/UX feedback and demonstrates real-world AI integration for modern product design workflows.
